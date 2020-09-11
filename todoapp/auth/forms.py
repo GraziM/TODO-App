@@ -1,14 +1,16 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.widgets import PasswordInput
 from todoapp.models import User
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = StringField('Password', validators=[DataRequired(), Length(min=3)])
+    password = StringField('Password', widget=PasswordInput() ,validators=[DataRequired(), Length(min=3)])
     confirm_password = StringField(
         'Confirm Password',
+        widget=PasswordInput(),
         validators=[DataRequired(), EqualTo('password')]
     )
     submit = SubmitField('Sign Up')
