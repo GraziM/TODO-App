@@ -7,7 +7,7 @@ from todoapp.models import User
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = StringField('Password', widget=PasswordInput() ,validators=[DataRequired(), Length(min=3)])
+    password = StringField('Password', widget=PasswordInput(), validators=[DataRequired(), Length(min=3)])
     confirm_password = StringField(
         'Confirm Password',
         widget=PasswordInput(),
@@ -28,6 +28,6 @@ class RegistrationForm(FlaskForm):
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = StringField('Password', validators=[DataRequired()])
+    password = StringField('Password', widget=PasswordInput(), validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')

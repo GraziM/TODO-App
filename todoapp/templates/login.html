@@ -1,32 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <fieldset>
-                {{ form.email.label() }}
+    <div class="container">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
 
-                {% if form.email.errors %}
-                    {{ form.email() }}
-                    {% for error in form.email.errors %}
-                        {{ error }}
-                    {% endfor %}
-                {% else %}
-                    {{ form.email() }}
-                {% endif %}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
 
-                {{ form.password.label() }}
-
-                {% if form.password.errors %}
-                    {{ form.password() }}
-                    {% for error in form.password.errors %}
-                        {{ error }}
-                    {% endfor %}
-                {% else %}
-                    {{ form.password() }}
-                {% endif %}
-
-        </fieldset>
-        {{ form.submit() }}
-    </form>
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control is-invalid") }}
+                        <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            {{ form.submit(class="btn") }}
+        </form>
+    </div>
 {% endblock content %}
