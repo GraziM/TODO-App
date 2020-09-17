@@ -5,8 +5,8 @@
     <h1>Todos</h1>
 
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
@@ -19,10 +19,11 @@
                 <tr>
                     <td>{{  todo.title  }}</td>
                     <td>{{  todo.description  }}</td>
-                    <td>
+                    <td style="display: inline-flex;">
                         <form action="{{ url_for('todos.delete_todo', todo_id=todo.id) }}" method="post">
-                            <input class="btn btn-danger" type="submit" value="X">
+                            <input class="btn btn-danger" type="submit" value="Delete">
                         </form>
+                        <a class="btn btn-primary" href="{{ url_for('todos.update_todo', todo_id=todo.id) }}">Update</a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -55,7 +56,7 @@
                     {% endif %}
 
                     </td>
-                    <td>{{ form.submit(class="btn") }}</td>
+                    <td>{{ form.submit(class="btn btn-info") }}</td>
                 </form>
             </tr>
     </tbody>

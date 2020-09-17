@@ -6,3 +6,6 @@ class TodoForm(FlaskForm):
     title = StringField('Title', validators=[Length(max=50)])
     description = TextField('Description', validators=[DataRequired()])
     submit = SubmitField('Add')
+
+class UpdateTodoForm(TodoForm):
+    submit = SubmitField('Update')
