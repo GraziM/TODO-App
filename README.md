@@ -4,11 +4,20 @@ Sistema simples de Cadastro de tarefas. Projeto desenvolvido com o intuito de ap
 
 ## Para rodar o sistema
 
-    pip install -r requirements.txt
-    set FLASK_APP=run.py
-    set SECRET_KEY=secretkey 
-    set SQLALCHEMY_DATABASE_URI=sqlite:///site.db
-    flask db init
-    flask db migrate
-    flask db upgrade
-    flask run
+Windows:
+
+	pip install -r requirements.txt
+	set FLASK_APP=run.py
+	flask db init
+	flask db migrate
+	flask db upgrade
+	flask run
+	
+Linux, Mac:
+
+	pip install -r requirements.txt
+	export FLASK_APP=run.py
+	flask db init
+	flask db migrate
+	flask db upgrade
+	flask run

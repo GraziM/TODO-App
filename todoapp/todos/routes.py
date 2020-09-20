@@ -15,6 +15,8 @@ def dashboard():
         todo = Todo(title=form.title.data, description=form.description.data, author=current_user)
         db.session.add(todo)
         db.session.commit()
+    form.title.data = ''
+    form.description.data = ''
     todos = Todo.query.filter_by(user_id=current_user.id).all()
     return render_template('dashboard.html', todos=todos, form=form, title="Dashboard")
 
